@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Submissions</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    padding:40px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+
+}
+
+th,td{
+
+    border:1px solid #ddd;
+    padding:15px;
+    text-align:left;
+
+}
+
+th{
+
+    background:#4f46e5;
+    color:white;
+
+}
+
+tr:nth-child(even){
+
+    background:#f9f9f9;
+
+}
+
+button{
+
+    margin-top:20px;
+    padding:10px 20px;
+    cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Contact Form Submissions</h1>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+
+<th>Email</th>
+
+<th>Message</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tableBody">
+
+</tbody>
+
+</table>
+
+<button onclick="clearData()">
+
+Clear All Data
+
+</button>
+
+<script>
+
+const data=
+
+JSON.parse(localStorage.getItem("submissions"))||[];
+
+const tableBody=document.getElementById("tableBody");
+
+data.forEach(item=>{
+
+tableBody.innerHTML+=`
+
+<tr>
+
+<td>${item.name}</td>
+
+<td>${item.email}</td>
+
+<td>${item.message}</td>
+
+</tr>
+
+`;
+
+});
+
+function clearData(){
+
+localStorage.removeItem("submissions");
+
+location.reload();
+
+}
+
+</script>
+
+</body>
+
+</html>
